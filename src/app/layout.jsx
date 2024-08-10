@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { Providers } from "./providers";
 import { siteConfig } from "../config/site";
 import { fontSans } from "../config/font";
-// import { dbConnect } from '@/app/lib/mongo';
+import { dbConnect } from '../lib/mongo';
 
 export const metadata = {
   title: {
@@ -28,7 +28,7 @@ export const viewport = {
 export default async function RootLayout({
   children,
 }) {
-  // const conn = await dbConnect();
+  const conn = await dbConnect();
   return (
     <html suppressHydrationWarning lang="pt-br">
       <head />
