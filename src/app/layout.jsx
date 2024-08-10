@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "../styles/globals.css"
 import { Metadata, Viewport } from "next";
 import { Link } from "@nextui-org/link";
 import clsx from "clsx";
@@ -30,7 +30,7 @@ export default async function RootLayout({
 }) {
   // const conn = await dbConnect();
   return (
-    <html suppressHydrationWarning lang="en">
+    <html suppressHydrationWarning lang="pt-br">
       <head />
       <body
         className={clsx(

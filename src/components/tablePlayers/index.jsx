@@ -74,7 +74,7 @@ const statusOptions = [
   { name: "OBSERVACAO", uid: "OBSERVACAO" },
 ];
 
-const INITIAL_VISIBLE_COLUMNS = ["name","tag", "clan", "status", "actions"];
+const INITIAL_VISIBLE_COLUMNS = ["tag", "clan", "status", "actions"];
 
 export default  function TablePlayers({ clan }) {
   const [filterValue, setFilterValue] = useState("");
@@ -318,12 +318,12 @@ export default  function TablePlayers({ clan }) {
 
   const topContent = React.useMemo(() => {
     return (
-      <div className="  text-white flex flex-col gap-4">
+      <div className=" text-white flex flex-col gap-2">
         <div className="flex justify-between gap-3 items-end">
           <Input
             isClearable
             classNames={{
-              base: "w-full sm:max-w-[44%]",
+              base: "w-full sm:max-w-[25%]",
               inputWrapper: "border-1 bg-slate-800",
             }}
             placeholder="Search by name..."
@@ -336,7 +336,7 @@ export default  function TablePlayers({ clan }) {
           />
           <div className="flex gap-3">
           <Dropdown>
-              <DropdownTrigger className="hidden sm:flex">
+              <DropdownTrigger className=" ">
                 <Button
                   endContent={<CaretDown className="text-small" />}
                   size="sm"
@@ -386,7 +386,7 @@ export default  function TablePlayers({ clan }) {
               </DropdownMenu>
             </Dropdown>
             <Dropdown>
-              <DropdownTrigger className="hidden sm:flex">
+              <DropdownTrigger className="">
                 <Button
                   endContent={<CaretDown className="text-small" />}
                   size="sm"
@@ -454,9 +454,7 @@ export default  function TablePlayers({ clan }) {
 
   const bottomContent = React.useMemo(() => {
     return (
-      <div className="py-2 px-2 flex justify-between items-center">
-
-     
+      <div className="">
 
         <Pagination
           showControls
@@ -561,7 +559,6 @@ export default  function TablePlayers({ clan }) {
 
 
       <Table
-        className=" bg-slate-950 p-4 "
         isCompact
         removeWrapper
         aria-label="Example table with custom cells, pagination and sorting"
@@ -582,15 +579,12 @@ export default  function TablePlayers({ clan }) {
         onSelectionChange={setSelectedKeys}
         onSortChange={setSortDescriptor}
       >
-        <TableHeader columns={headerColumns}
-        
-        >
+        <TableHeader columns={headerColumns}    >
           {(column) => (
              <TableColumn
              key={column.uid}
              align={column.uid === "actions" ? "center" : "start"}
              allowsSorting={column.sortable}
-             className="text-white font-bold px-4 py-2 rounded"
            >
               {column.name}
             </TableColumn>
