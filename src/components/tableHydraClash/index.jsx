@@ -53,9 +53,9 @@ export default function TableHydraClash({teams}) {
 
 
   return (
-        <div className='w-full flex flex-col bg-zinc-950 '>
-    <div className='w-full py-4 px-2'>
-          <tr className='flex w-full align-center justify-between px-2 py-2 text-xl font-bold bg-zinc-950'>
+        <div className=' flex flex-col  '>
+    <div className=' py-4 '>
+          <tr className='flex w-full align-center gap-2 justify-between px-2 py-2 text-sm font-bold bg-zinc-950'>
             <th>POSIÇÃO</th>
             <th>NOME DO CLAN</th>
             <th>CHAVES JOGADAS</th>

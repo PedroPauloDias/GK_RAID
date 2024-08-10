@@ -197,16 +197,16 @@ export default function HydraClash() {
           </div>
 
 
-          <div>
-            <div className='flex flex-col gap-4 my-10 mr-12'>
+          <div >
+            <div className='flex flex-col gap-4 my-10 mr-12 '>
               {dataTeams.map((dataTeam, index) => (
                 <div key={index}>
                   <div onClick={() => handleDetailsClick(index)} className='flex w-full bg-zinc-900 justify-between align-center gap-20 p-4 pointer'>
-                    <p className='ml-16'>{dataTeam.startDate} - {dataTeam.endDate}</p>
+                    <p className='xl:ml-16  '>{dataTeam.startDate} - {dataTeam.endDate}</p>
                     <button> <CaretDown size={16} /></button>
                   </div>
                   {isOpen === index && (
-                    <div className="flex flex-row justify-around">
+                    <div className="flex flex-row justify-around ">
                       <TableHydraClash teams={dataTeam.teams} />
                     </div>
                   )}
