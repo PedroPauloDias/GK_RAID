@@ -74,7 +74,7 @@ const statusOptions = [
   { name: "OBSERVACAO", uid: "OBSERVACAO" },
 ];
 
-const INITIAL_VISIBLE_COLUMNS = ["tag", "clan", "status", "actions"];
+const INITIAL_VISIBLE_COLUMNS = ["tag", "clan", "actions"];
 
 export default  function TablePlayers({ clan }) {
   const [filterValue, setFilterValue] = useState("");
@@ -278,7 +278,7 @@ export default  function TablePlayers({ clan }) {
                        onClick={() => deletePlayerId(user._id)}
 
                        type="button"
-                       className='w-full flex items-center justify-center text-white text-xs bg-red-700 shadow-lg p-2 px-4 rounded-xl hover:bg-red-900 transition ease-in'
+                       className='w-full flex items-center justify-center text-white text-xs bg-red-700 shadow-lg p-2  rounded-xl hover:bg-red-900 transition ease-in'
                        >
                        Delete
                      </button>
@@ -319,11 +319,11 @@ export default  function TablePlayers({ clan }) {
   const topContent = React.useMemo(() => {
     return (
       <div className=" text-white flex flex-col gap-2">
-        <div className="flex justify-between gap-3 items-end">
+        <div className="w-full ">
           <Input
             isClearable
             classNames={{
-              base: "w-full sm:max-w-[25%]",
+              base: " mb-4 ",
               inputWrapper: "border-1 bg-slate-800",
             }}
             placeholder="Search by name..."
@@ -425,7 +425,7 @@ export default  function TablePlayers({ clan }) {
           
           </div>
         </div>
-        <div className="flex justify-between items-center">
+        <div className="flex gap-4 items-center  ">
           <span className="text-default-400 text-small">Total {users.length} users</span>
           <label className="flex items-center text-default-400 text-small">
             Rows per page:

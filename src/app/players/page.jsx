@@ -9,11 +9,11 @@ import  Navbar from '../../components/navbar';
 
 const PlayersPage = () => {
     return (
-      <section className="w-screen flex flex-col   ">
+      <section className=" flex flex-col  ">
                     <Navbar />
 
         <div className=" text-center justify-center   p-2  ">
-          <div className=" text-center justify-center   p-4">
+          <div className=" text-center justify-center   py-4">
               <h1 className={title({ color: "violet" , size:"md" })}>Players&nbsp;</h1>
           <h1 className={title()}>GK&nbsp;</h1>
           </div>

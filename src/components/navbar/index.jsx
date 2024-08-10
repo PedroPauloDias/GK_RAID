@@ -8,8 +8,8 @@ export default function Navbar() {
 
   return (
     <>
-      <div className='w-full max-w-3xl flex gap-2 p-2 text-sm  text-center align-center 
-           justify-between   backdrop-blur-3xl  bg-opacity-30   '>
+      <div className=' w-full  flex justify-between gap-4  text-sm  
+              '>
           <div className=''>GK</div>
         <Link className=' hover:border-b-1 hover:border-zinc-200 ' href='/'>
           <p>Home</p>
