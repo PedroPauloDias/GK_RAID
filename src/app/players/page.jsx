@@ -1,10 +1,11 @@
 'use client'
 import React, { useEffect } from 'react'
+import TablePlayers from '../../components/tablePlayers/index.jsx'
 import { title } from './../primitives'
-import TablePlayers from '../../components/tablePlayers';
 // import { signOut, useSession } from 'next-auth/react'
 import { Button } from "@nextui-org/react";
 // import Navbar from '../../components/navbar';
+import { TablePlayers } from '@/';
 
 
 const PlayersPage = () => {
