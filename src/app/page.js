@@ -1,11 +1,8 @@
-import Link from "next/link";
+import LoginForm from '../components/loginForm'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Link href="/Details">
-          <p>LOGIN</p>
-      </Link>
-    </main>
+    <div><LoginForm/></div>
+
   );
 }

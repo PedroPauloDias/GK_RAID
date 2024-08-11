@@ -414,7 +414,7 @@ export default  function TablePlayers({ clan }) {
               </DropdownMenu>
             </Dropdown>
             {
-              session?.user?.role ? (
+              session?.user?.role === 'admin' ? (
                 <ModalCustom
                 title="Editar detalhes do jogador 2"
                 description="Add +"

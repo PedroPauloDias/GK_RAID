@@ -3,6 +3,7 @@ import Link from 'next/link'
 // import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { ThemeSwitch } from '../theme-switch'
+import Logout from '../../components/Logout'
 
 export default function Navbar() {
 
@@ -24,9 +25,7 @@ export default function Navbar() {
           <ThemeSwitch />
           <Image className='rounded-full' src='https://img.freepik.com/vetores-premium/logotipo-da-cabeca-de-bode_43623-304.jpg ' width='30' height='20' />
           {/* <p>{session?.user?.name}</p> */}
-          <button onClick={() => signOut()} className='flex text-sm rounded text-center justify-center ' >
-            sair
-          </button>
+         <Logout/>
         </div>
 
       </div>

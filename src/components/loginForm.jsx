@@ -89,7 +89,7 @@ export default function LoginForm() {
               radius="md" className="w-[250px]   bg-gradient-to-br from-red-900 to-zinc-600 text-white shadow-lg my-2"
             >Login</Button>
           </div>
-          <div>--------------</div>
+          <div className="w-full h-[4px]  bg-gradient-to-r from-[#110504] via-[#85adb5] to-transparent">  </div>
           <div className=" w-full flex flex-col  ">
             <button className=' p-2 rounded-xl bg-gradient-to-br from-red-900 to-zinc-500 text-white ' type='submit' onClick={handleVisitorLogin} color='radani2'>Visitante</button>
           </div  >
