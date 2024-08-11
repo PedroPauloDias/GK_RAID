@@ -1,5 +1,5 @@
 
-import { User } from '@/app/model/user-model';
+import { User } from '../../app/model/user-model';
 
 export async function createUser(user) {
   try{
