@@ -549,7 +549,7 @@ export default  function TablePlayers({ clan }) {
       </Table>
       
 
-      <div className="my-8">
+      <div className="my-10">
        { session?.user?.role === 'admin' ? (
          <ModalCustom
          title={currentPlayer ? `Detalhes de ${currentPlayer.name}` : "Detalhes do Jogador"}
