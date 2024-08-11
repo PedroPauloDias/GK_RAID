@@ -9,7 +9,7 @@ export default function ModalCustom({children, title, description}) {
     <>
       <Button onPress={onOpen} className='px-6  bg-zinc-800'  >{description}</Button>
   
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior}>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior} className='z-50'>
         <ModalContent>
           {(onClose) => (
             <>

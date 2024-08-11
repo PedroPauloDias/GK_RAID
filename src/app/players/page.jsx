@@ -5,9 +5,13 @@ import { title } from '../primitives.jsx'
 // import { signOut, useSession } from 'next-auth/react'
 import { Button } from "@nextui-org/react";
 import  Navbar from '../../components/navbar';
-
+import useAuth from '../hooks/useAuth';
 
 const PlayersPage = () => {
+
+  const  {session}  = useAuth();
+ console.log(session)
+
     return (
       <section className=" flex flex-col  ">
                     <Navbar />

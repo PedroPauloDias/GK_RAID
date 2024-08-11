@@ -30,6 +30,7 @@ import ModalCustom from "../modal";
 import Form from "../form";
 import { useRouter } from 'next/navigation';
 import {Popover, PopoverTrigger, PopoverContent, } from "@nextui-org/react";
+import useAuth from '../../app/hooks/useAuth';
 
 
 
@@ -98,25 +99,27 @@ export default  function TablePlayers({ clan }) {
 
   const router = useRouter();
 
-  // const { data: session } = useSession();
+  const  {session}  = useAuth();
+ console.log("SESSAO",session?.user?.role)  
+  
+    useEffect(() => {
+      if (session?.user?.role === 'admin') {
+        setIsAdmin(true)
+       }
+    }, [setIsAdmin]);
   
   
-    // useEffect(() => {
-    //   if (session?.user?.role === 'admin') {
-    //     setIsAdmin(true)
-    //    }
-    // }, [setIsAdmin]);
     
 
   function NotAdmin(){
     alert("desculpe , voce nao tem autorização")
   }
   
-  // useEffect(() => {
-  //   if (session?.user?.role === 'admin') {
-  //     setIsEditable(true)
-  //    }
-  // }, [setIsEditable]);
+  useEffect(() => {
+    if (session?.user?.role === 'admin') {
+      setIsEditable(true)
+     }
+  }, [setIsEditable]);
  
 
 
@@ -264,7 +267,7 @@ export default  function TablePlayers({ clan }) {
         <div className="px-1 py-2">
         <div className='flex items-center justify-center '>
                     {
-                      isAdmin? (
+                      session?.user?.role === 'admin' ? (
                         <div className=' flex flex-row gap-2'>
                         <ModalCustom
                         title="Editar detalhes do jogador "
@@ -278,12 +281,12 @@ export default  function TablePlayers({ clan }) {
                        onClick={() => deletePlayerId(user._id)}
 
                        type="button"
-                       className='w-full flex items-center justify-center text-white text-xs bg-red-700 shadow-lg p-2  rounded-xl hover:bg-red-900 transition ease-in'
+                       className='w-full flex items-center justify-center text-white text-xs bg-red-700 shadow-lg p-2  rounded-xl hover:bg-red-900 transition ease-in '
                        >
                        Delete
                      </button>
                      </div>
-                      ): <button  disabled ={!isAdmin} className="bg-foreground text-background border-solid border-2 border-red-900 rounded-lg px-2">Não autorizado</button>
+                      ): (<button  disabled ={!isAdmin} className="bg-foreground text-background border-solid border-2 border-red-900 rounded-lg px-2">Não autorizado</button>)
                     }
                 
                     </div>
@@ -411,7 +414,7 @@ export default  function TablePlayers({ clan }) {
               </DropdownMenu>
             </Dropdown>
             {
-              isAdmin? (
+              session?.user?.role ? (
                 <ModalCustom
                 title="Editar detalhes do jogador 2"
                 description="Add +"
@@ -500,8 +503,54 @@ export default  function TablePlayers({ clan }) {
 
   return (
     <>
-      <div>
-       { isAdmin? (
+      
+
+
+
+      <Table
+        isCompact
+        removeWrapper
+        aria-label="Example table with custom cells, pagination and sorting"
+        bottomContent={bottomContent}
+        bottomContentPlacement="outside"
+        checkboxesProps={{
+          classNames: {
+            wrapper: "after:bg-foreground after:text-background ",  
+         
+          },       
+        }}
+        classNames={classNames}
+        selectedKeys={selectedKeys}
+        selectionMode="multiple"
+        sortDescriptor={sortDescriptor}
+        topContent={topContent}
+        topContentPlacement="outside"
+        onSelectionChange={setSelectedKeys}
+        onSortChange={setSortDescriptor}
+      >
+        <TableHeader columns={headerColumns}    >
+          {(column) => (
+             <TableColumn
+             key={column.uid}
+             align={column.uid === "actions" ? "center" : "start"}
+             allowsSorting={column.sortable}
+           >
+              {column.name}
+            </TableColumn>
+          )}
+        </TableHeader>
+        <TableBody emptyContent={"No users found"} items={sortedItems}>
+          {(item) => (
+            <TableRow key={item._id}>
+              {(columnKey) => <TableCell  className="text-start" >{renderCell(item, columnKey)}</TableCell>}
+            </TableRow>
+          )}
+        </TableBody>
+      </Table>
+      
+
+      <div className="my-8">
+       { session?.user?.role === 'admin' ? (
          <ModalCustom
          title={currentPlayer ? `Detalhes de ${currentPlayer.name}` : "Detalhes do Jogador"}
          description={currentPlayer ? `Player: ${currentPlayer.tag}` : "Clique no NOME de um jogador para ver detalhes"}
@@ -555,49 +604,6 @@ export default  function TablePlayers({ clan }) {
           )
       }
 
-
-
-
-      <Table
-        isCompact
-        removeWrapper
-        aria-label="Example table with custom cells, pagination and sorting"
-        bottomContent={bottomContent}
-        bottomContentPlacement="outside"
-        checkboxesProps={{
-          classNames: {
-            wrapper: "after:bg-foreground after:text-background ",  
-         
-          },       
-        }}
-        classNames={classNames}
-        selectedKeys={selectedKeys}
-        selectionMode="multiple"
-        sortDescriptor={sortDescriptor}
-        topContent={topContent}
-        topContentPlacement="outside"
-        onSelectionChange={setSelectedKeys}
-        onSortChange={setSortDescriptor}
-      >
-        <TableHeader columns={headerColumns}    >
-          {(column) => (
-             <TableColumn
-             key={column.uid}
-             align={column.uid === "actions" ? "center" : "start"}
-             allowsSorting={column.sortable}
-           >
-              {column.name}
-            </TableColumn>
-          )}
-        </TableHeader>
-        <TableBody emptyContent={"No users found"} items={sortedItems}>
-          {(item) => (
-            <TableRow key={item._id}>
-              {(columnKey) => <TableCell  className="text-start" >{renderCell(item, columnKey)}</TableCell>}
-            </TableRow>
-          )}
-        </TableBody>
-        </Table>
         
       </div>
     </>
